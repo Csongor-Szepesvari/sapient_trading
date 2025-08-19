@@ -264,7 +264,7 @@ con.execute(
 - Cleaning: lowercasing, Unicode normalization, URL/symbol stripping, stopword-light (preserve finance terms).
 - Deduplication: hash of canonicalized `title+source+ts`.
 - Ticker mapping: strict allowlist based on configured universe; fallback to company name match if needed.
-- See also: [[Module - NLP and LLM Agents]] for sentiment interface and downstream consumption.
+- See also: [[Module-NLP-and-LLM-Agents]] for sentiment interface and downstream consumption.
 
 ### Integration Points
 - Sentiment Agent reads `news_norm` for T‑1/T‑0 windows; outputs `news_sent`, `news_conf` to `features_daily` via the features pipeline.

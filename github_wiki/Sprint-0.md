@@ -1,4 +1,3 @@
-
 # Modular Trading Suite — Sprint Plan & Design Doc
 
 > **Scope:** Build a modular, research-oriented end‑to‑end trading suite for **U.S. equities** (extensible to other markets) using **LLM agents**, **Deep RL**, **HRM** for synthesis/justification, and a **True Confidence** uncertainty module. This doc is formatted for Obsidian and includes Mermaid diagrams.
@@ -20,7 +19,7 @@
 **Owner:** 
 **Co‑owner:** 
 
-Obsidian: [[Module - Data Engineering]]
+Obsidian: [[Module-Data-Engineering]]
 
 - **A1. Market Data APIs (prices/volume):**
   - Integrate **Yahoo Finance** (historical) via `yfinance` — [yfinance github](https://github.com/ranaroussi/yfinance)
@@ -102,7 +101,7 @@ Obsidian: [[Module - Data Engineering]]
 **Owner:** 
 **Co‑owner:** 
 
-Obsidian: [[Module - NLP and LLM Agents]]
+Obsidian: [[Module-NLP-and-LLM-Agents]]
 
 - **B1. Sentiment Agent (MVP):**
   - Implement **FinBERT** pipeline via `transformers` for financial sentiment. Model card: **ProsusAI/finbert** — [https://huggingface.co/ProsusAI/finbert](https://huggingface.co/ProsusAI/finbert)
@@ -122,18 +121,18 @@ Obsidian: [[Module - NLP and LLM Agents]]
 **Owner:** 
 **Co‑owner:** 
 
-Obsidian: [[Module - Decision and Reasoning]]
+Obsidian: [[Module-Decision-and-Reasoning]]
 
 - **C1. Aggregator V0 (Rules):**
-  - Combine **sentiment z‑score** and **momentum** (e.g., 20‑day return) into `alpha_score`. See [[Module - Decision - Aggregator V0|Module: Decision/Aggregator V0]].
+  - Combine **sentiment z‑score** and **momentum** (e.g., 20‑day return) into `alpha_score`. See [[Module-Decision-Aggregator-V0|Module: Decision/Aggregator V0]].
   - Rules: `alpha>t_buy → buy`, `alpha<t_sell → sell`, else hold.
 - **C2. HRM Placeholder:**
-  - Add **reasoning stub** that logs factors used and a one‑paragraph justification template. See [[Module - Decision - HRM Stub|Module: Decision/HRM Stub]]. (HRM integration in next sprint.)
+  - Add **reasoning stub** that logs factors used and a one‑paragraph justification template. See [[Module-Decision-HRM-Stub|Module: Decision/HRM Stub]]. (HRM integration in next sprint.)
 - **C3. RL Track (parallel spike):**
-  - Portfolio **PPO** (daily rebalancing) using `stable-baselines3` — [https://stable-baselines3.readthedocs.io](https://stable-baselines3.readthedocs.io) (see [[Tech - Stable-Baselines3|Tech: SB3]]).
-  - State: {top‑k features incl. sentiment, momentum, risk metrics}. Action: target weights. Reward: daily portfolio return with risk penalties. See [[Module - RL - PPO Portfolio Spike|Module: RL/PPO Portfolio Spike]].
+  - Portfolio **PPO** (daily rebalancing) using `stable-baselines3` — [https://stable-baselines3.readthedocs.io](https://stable-baselines3.readthedocs.io) (see [[Tech-Stable-Baselines3|Tech: SB3]]).
+  - State: {top‑k features incl. sentiment, momentum, risk metrics}. Action: target weights. Reward: daily portfolio return with risk penalties. See [[Module-RL-PPO-Portfolio-Spike|Module: RL/PPO Portfolio Spike]].
 - **C4. Uncertainty (“True Confidence”):**
-  - Implement **meta‑labeling** classifier `P(success|context)` using last N trades & market context; threshold drives **position scaling**. See [[Choice - Meta-Labeling|Choice: Meta-Labeling (True Confidence)]].
+  - Implement **meta‑labeling** classifier `P(success|context)` using last N trades & market context; threshold drives **position scaling**. See [[Choice-Meta-Labeling|Choice: Meta-Labeling (True Confidence)]].
 
 **Deliverables:**
 - `decision/aggregator_v0.py` + config thresholds.
@@ -145,18 +144,18 @@ Obsidian: [[Module - Decision and Reasoning]]
 **Owner:** 
 **Co‑owner:** 
 
-Obsidian: [[Module - Execution and Evaluation]]
+Obsidian: [[Module-Execution-and-Evaluation]]
 
 - **D1. Execution:**
-  - **Alpaca Paper** integration — [https://alpaca.markets/docs/api-references/trading-api/](https://alpaca.markets/docs/api-references/trading-api/) (see [[Tech - Alpaca|Tech: Alpaca]])
-  - Orders: market (MVP). Add config for slippage assumptions in backtest. See [[Module - Exec - Alpaca|Module: Exec/Alpaca]].
+  - **Alpaca Paper** integration — [https://alpaca.markets/docs/api-references/trading-api/](https://alpaca.markets/docs/api-references/trading-api/) (see [[Tech-Alpaca|Tech: Alpaca]])
+  - Orders: market (MVP). Add config for slippage assumptions in backtest. See [[Module-Exec-Alpaca|Module: Exec/Alpaca]].
 - **D2. Backtesting:**
-  - **Backtrader** — [https://www.backtrader.com/docu/](https://www.backtrader.com/docu/) (see [[Tech - Backtrader|Tech: Backtrader]])
-  - Implement adapter: same **signals → orders** interface for both backtest and live. See [[Module - Exec - Backtester|Module: Exec/Backtester]].
+  - **Backtrader** — [https://www.backtrader.com/docu/](https://www.backtrader.com/docu/) (see [[Tech-Backtrader|Tech: Backtrader]])
+  - Implement adapter: same **signals → orders** interface for both backtest and live. See [[Module-Exec-Backtester|Module: Exec/Backtester]].
 - **D3. Evaluation & Tracking:**
   - Metrics: return, vol, **Sharpe**, **max DD**, turnover; per‑asset PnL.
-  - **MLflow** experiment tracking — [https://mlflow.org](https://mlflow.org). Artifact: equity curve, trade logs. See [[Tech - MLflow|Tech: MLflow]].
-  - Optional dashboard: **Streamlit** quick app — [https://streamlit.io](https://streamlit.io) (see [[Tech - Streamlit|Tech: Streamlit]])
+  - **MLflow** experiment tracking — [https://mlflow.org](https://mlflow.org). Artifact: equity curve, trade logs. See [[Tech-MLflow|Tech: MLflow]].
+  - Optional dashboard: **Streamlit** quick app — [https://streamlit.io](https://streamlit.io) (see [[Tech-Streamlit|Tech: Streamlit]])
 
 **Deliverables:**
 - `exec/alpaca_client.py`, `exec/backtester.py`
@@ -168,11 +167,11 @@ Obsidian: [[Module - Execution and Evaluation]]
 **Owner:** 
 **Co‑owner:** 
 
-Obsidian: [[Module - Platform and Ops]]
+Obsidian: [[Module-Platform-and-Ops]]
 
 - **E1. Repo & Env:**
-  - Monorepo `trading-suite/` with **Poetry** or **uv**; Python 3.11. See [[Tech - Poetry|Tech: Poetry]] and [[Tech - uv|Tech: uv]].
-  - **Dockerfile**; **devcontainer** for VSCode. See [[Tech - Docker|Tech: Docker]] and [[Tech - Devcontainer|Tech: Devcontainer]].
+  - Monorepo `trading-suite/` with **Poetry** or **uv**; Python 3.11. See [[Tech-Poetry|Tech: Poetry]] and [[Tech-uv|Tech: uv]].
+  - **Dockerfile**; **devcontainer** for VSCode. See [[Tech-Docker|Tech: Docker]] and [[Tech-Devcontainer|Tech: Devcontainer]].
 - **E2. Config & Orchestration:**
   - **Hydra/OmegaConf** config trees — [https://hydra.cc](https://hydra.cc)
   - **Prefect** for scheduled jobs (daily runs) — [https://www.prefect.io](https://www.prefect.io)
