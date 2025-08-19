@@ -1,0 +1,22 @@
+Title,Body,Labels,Milestone
+Repo bootstrap (Poetry/uv, pyproject, structure),"Create repo `trading-suite/`, choose Poetry or uv, add base structure per design.",type:infra;area:platform;P0,Sprint 1
+Devcontainer + Dockerfile,"Add `docker/Dockerfile` and `.devcontainer` for consistent local env.",type:infra;area:platform;P0,Sprint 1
+CI setup (tests, ruff, mypy),"Add `.github/workflows/ci.yml` running unit tests, ruff, mypy.",type:infra;area:platform;P0,Sprint 1
+Config scaffolding (Hydra),"Create `conf/base.yaml` and `conf/profiles/{backtest,paper}.yaml`.",type:setup;area:ops;P0,Sprint 1
+Secrets template,"Add `.env.example` with required keys (Alpaca, NewsAPI, FMP, Reddit).",type:setup;area:ops;P0,Sprint 1
+Universe definition,"Decide and commit initial universe list (e.g., S&P100 or S&P500).",type:decision;area:data;P0,Sprint 1
+Data lake skeleton,"Create `data/lake/{ohlcv,news_raw,news_norm,fundamentals,features}` directories.",type:setup;area:data;P0,Sprint 1
+Dataset registry skeleton,"Create `catalog.yml` with entries for `ohlcv_daily`, `news_norm`, `features_daily`.",type:setup;area:data;P0,Sprint 1
+Market ingestion (yfinance),"Implement `ingestion/ingest_market.py` writing OHLCV Parquet + DuckDB registration.",type:feature;area:data;P0,Sprint 1
+News ingestion + normalize,"Implement `ingestion/ingest_news.py` and `ingestion/normalize_text.py`.",type:feature;area:data;P0,Sprint 1
+Features daily,"Implement `features/daily.py` (r20, rsi14) writing to `features_daily`.",type:feature;area:features;P0,Sprint 1
+Sentiment agent (FinBERT),"Implement `agents/sentiment/finbert_agent.py` returning `news_sent`, `news_conf`.",type:feature;area:agents;P0,Sprint 1
+Aggregator V0 (rules+rationale),"Implement `decision/aggregator_v0.py` combining sentiment z-score + momentum.",type:feature;area:decision;P0,Sprint 1
+Backtester adapter,"Implement `exec/backtester.py` with signals→orders parity to live.",type:feature;area:exec;P0,Sprint 1
+Alpaca paper client,"Implement `exec/alpaca_client.py` (market orders MVP).",type:feature;area:exec;P0,Sprint 1
+Evaluation metrics + MLflow,"Implement `eval/metrics.py` and log to MLflow; save equity curve.",type:feature;area:eval;P0,Sprint 1
+Prefect daily flow,"Create `flows/daily_run.py` with backtest/paper modes.",type:feature;area:ops;P1,Sprint 1
+Great Expectations suites,"Add GE suites for `ohlcv_daily`, `news_norm`, `features_daily`.",type:quality;area:data;P1,Sprint 1
+RL spike (PPO) skeleton,"Create `rl/ppo_portfolio_spike.py` on synthetic env; hooks ready.",type:research;area:rl;P2,Sprint 1
+Uncertainty/meta-labeling stub,"Add classifier interface and placeholder; integrate into aggregator sizing.",type:research;area:risk;P2,Sprint 1
+Tech cards + FAQs in docs,"Populate Core Tech Cards and Choice FAQs; add Obsidian links.",type:docs;area:platform;P0,Sprint 1 
